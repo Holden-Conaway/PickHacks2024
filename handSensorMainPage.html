@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand Sensor Password</title>
+</head>
+<body>
+    <h2>Would you like to configure a new password?</h2>
+    <button onclick="createPassword()">Yes</button>
+    <button onclick="reloadPage()">No</button>
+
+    <script>
+        function createPassword() {
+            //this would take us to a different page that would prompt to hold their left hand out 
+            // Redirect to another page
+            window.location.href = "hoverLeftHand.html";
+        }
+
+        function reloadPage() {
+            location.reload();
+        }
+
+    </script>
+</body>
+</html>
