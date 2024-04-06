@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="/node_modules/leapjs/leap-1.1.1.js"></script>
+    <script src="/controller.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hover Left Hand</title>
@@ -80,8 +82,18 @@
     </div>
     <script>
         function verifyLeftHandHovered() {
-            // verify if left hand is hovered 
+            // Simulating a check for left hand being hovered
+            
+            if (window.hands.left.visible) {
+                window.location.href = "hoverRightHand.html"; // Redirect to next page if left hand is hovered
+            } else {
+                // If left hand is not hovered, wait for 2 seconds and check again
+                setTimeout(verifyLeftHandHovered, 2000);
+            }
         }
+
+        // Call the function to start checking if left hand is hovered
+        verifyLeftHandHovered();
     </script>
 </body>
 </html>
