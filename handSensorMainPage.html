@@ -1,18 +1,60 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hand Sensor Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h2>Would you like to configure a new password?</h2>
-    <button onclick="createPassword()">Yes</button>
-    <button onclick="reloadPage()">No</button>
+    <div class="container">
+        <h2>Would you like to configure a new password?</h2>
+        <button onclick="createPassword()">Yes</button>
+        <button onclick="reloadPage()">No</button>
+    </div>
 
     <script>
         function createPassword() {
-            //this would take us to a different page that would prompt to hold their left hand out 
             // Redirect to another page
             window.location.href = "hoverLeftHand.html";
         }
@@ -20,7 +62,6 @@
         function reloadPage() {
             location.reload();
         }
-
     </script>
 </body>
 </html>
