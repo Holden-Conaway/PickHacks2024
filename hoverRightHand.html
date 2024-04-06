@@ -5,9 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hover Both Hands</title>
     <style>
-        .image-container {
-            text-align: center;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
         }
+
+        .background-text {
+            position: absolute;
+            top: 20px;
+            font-size: 60px;
+            color: rgba(10,1,1);
+            pointer-events: none; /* Ensures the text doesn't interfere with button clicks */
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1; /* Ensures the container appears above the background text */
+        }
+
+        h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .image-container {
+            margin-top: 20px;
+            max-height: calc(100vh - 400px); /* Adjust the value as needed */
+        }
+
         img {
             max-width: 100%;
             height: auto;
@@ -15,17 +52,18 @@
     </style>
 </head>
 <body>
-    <script>
-        function checkBothHandsHovered(){
-        //add functionality for checking
-    }
-    </script>
-</body>
-<body>
-    <h2>Please Hover Your Left Hand</h2>
-    <div class="image-container">
-        <img src="img/bothHandsImage.jpg" alt="Hand Image">
+    <div class="background-text">Hover Both Hands</div>
+    <div class="container">
+        <h2>Once both hands hovered we move on to phase 3</h2>
+        <div class="image-container">
+            <img src="img/bothHandsImage.jpg" alt="Hand Image">
+        </div>
+        <!-- You can add further instructions or interactions here -->
     </div>
-    <!-- You can add further instructions or interactions here -->
+    <script>
+        function verifyBothHandsHovered() {
+            // verify if both hands are hovered
+        }
+    </script>
 </body>
 </html>
