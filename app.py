@@ -28,7 +28,7 @@ def newPassword():
     if old_password_hash == new_password_hash:
         return("You can't reuse a previous password")
     else:
-        return new_password_hash
+        return flask.jsonify({"password": new_password_hash})
 
 
 ## IT is a post request. JSON as body. Store new password as crypto hash (SHA256)
@@ -49,9 +49,9 @@ def verifyPassword():
     
     #Returns true if the hash is the same, otherwise false
     if password_attempt_hash == password:
-        return True
+        return flask.jsonify({"success": True}
     else:
-        return False
+        return flask.jsonify({"success": False}
 
 
 if __name__ == "__main__":
