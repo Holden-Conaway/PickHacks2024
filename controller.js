@@ -23,7 +23,8 @@ Leap.loop({
     thishand.numFingers = 0
     for (let finger of hand.fingers) {
       thishand.numFingers += finger.extended
-    }    
+    }
+    console.log(thishand)    
   }
 })
 

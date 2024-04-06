@@ -83,7 +83,7 @@
     <script>
         function verifyLeftHandHovered() {
             // Simulating a check for left hand being hovered
-            
+            console.log(window.hands.left)   
             if (window.hands.left.visible) {
                 window.location.href = "hoverRightHand.html"; // Redirect to next page if left hand is hovered
             } else {
@@ -91,7 +91,6 @@
                 setTimeout(verifyLeftHandHovered, 2000);
             }
         }
-
         // Call the function to start checking if left hand is hovered
         verifyLeftHandHovered();
     </script>
