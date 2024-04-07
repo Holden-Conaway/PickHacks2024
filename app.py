@@ -15,7 +15,7 @@ def newPassword():
     data = flask.request.json
     #Get old and new password if data if found, otherwise, return error message
     if data:
-        password_attempt = data.get("password_attempt")
+        password_attempt = data.get("password-attempt")
         new_password = data.get("new-password")
     else:
         return("Failed to retrieve JSON file")
