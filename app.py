@@ -24,12 +24,13 @@ def newPassword():
     with open("passhash.txt") as fp:
         oldhash = fp.read()
 
-    #Hashes the bytes of the new password and gets the hexidecimal representation 
+    #Hashes the bytes of the new password and gets the hexidecimal representation
     password_attempt_hash = hashlib.sha256(password_attempt.encode()).hexdigest()
-    
     if password_attempt_hash == oldhash:
+        new_pass_hash = hashlib.sha256(new_password.encode()).hexdigest()
         with open("passhash.txt", "w") as fp:
-            new_pass_hash = hashlib.sha256(new_password.encode()).hexdigest()
+            fp.write(new_pass_hash)
+        return "Password changed"
     else:
         return "Incorrect password"
 
@@ -52,7 +53,7 @@ def verifyPassword():
 
     #Hash the attempt in order to compare to the hashed password
     password_attempt_hash = hashlib.sha256(password_attempt.encode()).hexdigest()
-    
+
     #Returns true if the hash is the same, otherwise false
     if password_attempt_hash == password:
         return flask.jsonify({"success": True})
