@@ -19,15 +19,6 @@
             position: relative;
         }
 
-        .background-text {
-            position: absolute;
-            top: 20px;
-            font-size: 60px;
-            font-weight: bold;
-            color: rgb(10, 1, 1);
-            pointer-events: none; /* Ensures the text doesn't interfere with button clicks */
-            z-index: 0; /* Place the background text behind other elements */
-        }
 
         .container {
             text-align: center;
@@ -38,18 +29,25 @@
             z-index: 1; /* Ensures the container appears above the background text */
         }
 
-        h2 {
-            margin-top: 0;
-            margin-bottom: 20px;
+        .header {
             color: #333333;
+            margin: 0;
         }
 
+        /* Style for the image */
+        .hand-image {
+            width: 600px; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px; /* Adjust spacing */
+        }
     </style>
 </head>
 <body>
-    <div class="background-text">Hand Sensor Password Creation</div>
     <div class="container">
-        <h2>Hover left hand to verify password or hover right hand to reset password</h2>
+        <h2 class="header">The Handy Password</h2>
+
+        <!-- Image slot -->
+        <img src="img/homePageHands.jpg" alt="Hand Image" class="hand-image">
     </div>
 
     <script>
