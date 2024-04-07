@@ -6,18 +6,17 @@ app = flask.Flask(__name__)
 @app.route("/")
 def index():
     return "HELLO"
-
 # Define a route that serves static web pages
 
 #Route that returns the newly updated password hash if it is different than the current password
 @app.route("/new-password", methods=['POST'])
 def newPassword():
     #Gets the JSON file with the passwords
-    data = flask.request.json()
+    data = flask.request.json
     #Get old and new password if data if found, otherwise, return error message
     if data:
-        attempt_password = data.get("attempt-password")
-	new_password = data.get("new-password")
+        password_attempt = data.get("password_attempt")
+        new_password = data.get("new-password")
     else:
         return("Failed to retrieve JSON file")
 
@@ -26,13 +25,13 @@ def newPassword():
         oldhash = fp.read()
 
     #Hashes the bytes of the new password and gets the hexidecimal representation 
-    attempt_password_hash = hashlib.sha256(attempt_password.encode()).hexdigest()
+    password_attempt_hash = hashlib.sha256(password_attempt.encode()).hexdigest()
     
-    if attempt_password_hash == oldhash:
+    if password_attempt_hash == oldhash:
         with open("passhash.txt", "w") as fp:
-	    new_pass_hash = hashlib.sha256(new_password.encode()).hexdigest()
+            new_pass_hash = hashlib.sha256(new_password.encode()).hexdigest()
     else:
-	return "Incorrect password"
+        return "Incorrect password"
 
 
 ## IT is a post request. JSON as body. Store new password as crypto hash (SHA256)
@@ -40,7 +39,7 @@ def newPassword():
 @app.route("/verify-password", methods=['POST'])
 def verifyPassword():
     #Gets the JSON file with the passwords
-    data = flask.request.json()
+    data = flask.request.json
     #Get attempt and actual password if data if found, otherwise, return error message
     if data:
         password_attempt = data.get("password-attempt")
@@ -48,8 +47,8 @@ def verifyPassword():
         return("Failed to retrieve JSON file")
 
     #Reads in the password hash
-    with open("passhash.txt", "w") as ph:
-	password = ph.read()
+    with open("passhash.txt") as ph:
+        password = ph.read()
 
     #Hash the attempt in order to compare to the hashed password
     password_attempt_hash = hashlib.sha256(password_attempt.encode()).hexdigest()
