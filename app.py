@@ -1,13 +1,22 @@
 import flask
 import hashlib
+import os
 
 app = flask.Flask(__name__)
 
 @app.route("/")
 def index():
-    return "HELLO"
+    return flask.send_from_directory(".", "handSensorMainPage.html")
 # Define a route that serves static web pages
 
+# Route that serves static web pages
+@app.route("/<path:filename>")
+def static_files(filename):
+    # Check if the file exists in the 'static' directory
+    if os.path.exists(filename):
+        return flask.send_from_directory(".", filename)
+    else:
+        return "File not found", 404
 #Route that returns the newly updated password hash if it is different than the current password
 @app.route("/new-password", methods=['POST'])
 def newPassword():
