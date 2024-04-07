@@ -31,7 +31,7 @@ def newPassword():
 
     #Get the current password hash
     with open("passhash.txt") as fp:
-        oldhash = fp.read()
+        oldhash = fp.read().strip()
 
     #Hashes the bytes of the new password and gets the hexidecimal representation
     password_attempt_hash = hashlib.sha256(password_attempt.encode()).hexdigest()
@@ -39,9 +39,9 @@ def newPassword():
         new_pass_hash = hashlib.sha256(new_password.encode()).hexdigest()
         with open("passhash.txt", "w") as fp:
             fp.write(new_pass_hash)
-        return "Password changed"
+        return flask.jsonify({ "success": True })
     else:
-        return "Incorrect password"
+        return flask.jsonify({ "success": False })
 
 
 ## IT is a post request. JSON as body. Store new password as crypto hash (SHA256)
@@ -58,12 +58,10 @@ def verifyPassword():
 
     #Reads in the password hash
     with open("passhash.txt") as ph:
-        password = ph.read()
-
+        password = ph.read().strip()
     #Hash the attempt in order to compare to the hashed password
     password_attempt_hash = hashlib.sha256(password_attempt.encode()).hexdigest()
-
-    #Returns true if the hash is the same, otherwise false
+       #Returns true if the hash is the same, otherwise false
     if password_attempt_hash == password:
         return flask.jsonify({"success": True})
     else:
